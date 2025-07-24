@@ -22,7 +22,7 @@ describe("Product repository tests", () => {
     await sequelize.close();
   });
 
-  it("should find all products", async () => {
+  it("should create product", async () => {
     const productRepository = new ProductRepository();
     const product = new Product("1", "Product 1", 100);
 
@@ -44,7 +44,7 @@ describe("Product repository tests", () => {
 
     productRepository.create(product);
 
-    const productModel = await ProductModel.findOne({
+    await ProductModel.findOne({
       where: { id: "1" },
     });
 
