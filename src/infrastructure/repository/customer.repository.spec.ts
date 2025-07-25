@@ -102,16 +102,20 @@ describe("Customer repository tests", () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("1", "Customer 1");
     const address = new Address("Rua 2", 2, "123", "City");
-    customer.Address = address;
+    customer.changeAddress(address);
+    customer.addRewardPoints(10);
     await customerRepository.create(customer);
 
     const customer2 = new Customer("2", "Customer 2");
     const address2 = new Address("Rua 2", 2, "123", "City");
-    customer2.Address = address2;
+    customer2.changeAddress(address2);
+    customer2.addRewardPoints(20);
     await customerRepository.create(customer2);
 
     const customers = await customerRepository.findAll();
 
     expect(customers).toHaveLength(2);
+    expect(customers).toContainEqual(customer);
+    expect(customers).toContainEqual(customer2);
   });
 });

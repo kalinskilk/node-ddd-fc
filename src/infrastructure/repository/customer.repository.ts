@@ -60,9 +60,23 @@ export default class CustomerRepository
   }
 
   async findAll(): Promise<Customer[]> {
-    const customers = await CustomerModel.findAll();
-    return customers.map(
-      (customer) => new Customer(customer.id, customer.name)
-    );
+    const customersModel = await CustomerModel.findAll();
+    const customers = customersModel.map((customerModel) => {
+      const customer = new Customer(customerModel.id, customerModel.name);
+      const address = new Address(
+        customerModel.street,
+        customerModel.number,
+        customerModel.zip,
+        customerModel.city
+      );
+      customer.addRewardPoints(customerModel.rewardPoints);
+      if (customerModel.active) {
+        customer.activate();
+      }
+      customer.changeAddress(address);
+      return customer;
+    });
+
+    return customers;
   }
 }
