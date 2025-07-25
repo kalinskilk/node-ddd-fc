@@ -18,6 +18,15 @@ export default class OrderItemModel extends Model {
   @Column
   declare id: string;
 
+  @Column({ allowNull: false })
+  declare name: string;
+
+  @Column({ allowNull: false })
+  declare quantity: number;
+
+  @Column({ allowNull: false })
+  declare price: number;
+
   @ForeignKey(() => ProductModel)
   @Column({ allowNull: false })
   declare product_id: string;
@@ -31,13 +40,4 @@ export default class OrderItemModel extends Model {
 
   @BelongsTo(() => OrderModel)
   declare order: OrderModel;
-
-  @Column({ allowNull: false })
-  declare name: string;
-
-  @Column({ allowNull: false })
-  declare quantity: number;
-
-  @Column({ allowNull: false })
-  declare price: number;
 }

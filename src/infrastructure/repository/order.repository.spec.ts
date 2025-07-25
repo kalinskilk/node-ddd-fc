@@ -9,6 +9,7 @@ import OrderItemModel from "../db/sequelize/model/order-item.model";
 import OrderModel from "../db/sequelize/model/order.model";
 import ProductModel from "../db/sequelize/model/product.model";
 import CustomerRepository from "./customer.repository";
+import OrderRepository from "./order.repository";
 import ProductRepository from "./product.repository";
 
 describe("Order repository tests", () => {
@@ -57,14 +58,14 @@ describe("Order repository tests", () => {
     const order = new Order("1", customer.id, [orderItem]);
 
     const orderRepository = new OrderRepository();
-    await orderRepository.create(orderItem);
+    await orderRepository.create(order);
 
     const orderModel = await OrderModel.findOne({
       where: { id: order.id },
       include: ["items"],
     });
 
-    expect(orderModel).toStrictEqual({
+    expect(orderModel?.toJSON()).toStrictEqual({
       id: "1",
       customer_id: customer.id,
       total: order.total(),
