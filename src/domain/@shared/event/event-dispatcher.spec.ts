@@ -1,10 +1,10 @@
-import CustomerAddressChangedEvent from "../customer/customer-address-changed.event";
-import CustomerCreatedEvent from "../customer/customer-created.event";
-import ConsoleLogWhenCustomerAddressIsChangedHandler from "../customer/handler/console-log-when-customer-address-is-changed.handler";
-import LogCustomerCreatedToConsole2Handler from "../customer/handler/log-customer-created-to-console-2.handler";
-import LogCustomerCreatedToConsoleHandler from "../customer/handler/log-customer-created-to-console.handler";
-import SendEmailWhenProductIsCreatedHandler from "../product/handler/send-email-when-product-is-created.handler";
-import ProductCreatedEvent from "../product/product-created.event";
+import CustomerAddressChangedEvent from "../../customer/event/customer-address-changed.event";
+import CustomerCreatedEvent from "../../customer/event/customer-created.event";
+import ConsoleLogWhenCustomerAddressIsChangedHandler from "../../customer/event/handler/console-log-when-customer-address-is-changed.handler";
+import LogCustomerCreatedToConsole2Handler from "../../customer/event/handler/log-customer-created-to-console-2.handler";
+import LogCustomerCreatedToConsoleHandler from "../../customer/event/handler/log-customer-created-to-console.handler";
+import SendEmailWhenProductIsCreatedHandler from "../../product/event/handler/send-email-when-product-is-created.handler";
+import ProductCreatedEvent from "../../product/event/product-created.event";
 import EventDispatcher from "./event-dispatcher";
 
 describe("Domain event tests", () => {

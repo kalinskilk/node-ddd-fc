@@ -1,5 +1,5 @@
-import Product from "../../domain/entity/product";
-import RepositoryInterface from "../../domain/repository/repository.interface";
+import RepositoryInterface from "../../domain/@shared/repository/repository.interface";
+import Product from "../../domain/product/entity/product";
 import ProductModel from "../db/sequelize/model/product.model";
 
 export default class ProductRepository implements RepositoryInterface<Product> {
